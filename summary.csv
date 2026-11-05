@@ -1,0 +1,2 @@
+basin,hen_nse,hen_kge,hen_pearson_r,hen_pr_error_lambda_2,hen_pr_error_lambda_5,hen_pr_error_lambda_10,peak_lag,peak_value,area_km2,euh_static_mode,euh_static_attributes
+01022500,0.7339757139854828,0.6684839144633097,0.880714476108551,0.07716740667819977,0.05859058350324631,0.1326601654291153,1.0,0.9604555368423462,587.675987,basin_static,"{""BASIN_HUC"":1.0,""Size(km2)"":620.3800048828125,""Elevation(m)"":92.68000030517578,""Slope(m_km-1)"":17.790719985961914,""Frac_Forest(percent)"":0.9232000112533569}"
