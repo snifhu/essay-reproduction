@@ -1,0 +1,66 @@
+{
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/gpu.csv": {
+    "bytes": 1755,
+    "sha256": "818c72f28c1ab4a6096fb4dca844e8f6fd3d6977cdcdc73d4eb47f3c5b0e23ad"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/raw_Q_metrics.json": {
+    "bytes": 99,
+    "sha256": "32d541fc5156d5cee92e76b7e4a93e0d5cd8782b14aff93f8742287c276a3879"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/run.json": {
+    "bytes": 2096,
+    "sha256": "a5738e099424bdae9107ae7cbc7aec21bb89612abceab1b0d27e725d42a50a58"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/summary.csv": {
+    "bytes": 513,
+    "sha256": "34e9028e9359b36c899fc06ac2142a0967a5b3df8eff7272fdbccc2f9fe9ce42"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/test_predictions.csv": {
+    "bytes": 72214,
+    "sha256": "1528ca229cf84d766cfbdfb141c28e5ce8ec6780c09f83e2b7cd7c67e6d560fa"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/train.log": {
+    "bytes": 4958,
+    "sha256": "1e9657b87b2d75e68264c43a439545b08326b34def7924c640044d7788558d20"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/checkpoints/01022500_HydEquivNet_Causal.pth": {
+    "bytes": 1499350,
+    "sha256": "d6fdaa401d655c9156c31fd3619358b66c648282fcadb670509072e036ff53df"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/figures/01022500_kernels.png": {
+    "bytes": 153430,
+    "sha256": "17841088f9bf669ebe4a354ae3519fd9b3cd96c1cf94c9547b2e7522bcbed718"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/figures/01022500_unit_hydrograph.png": {
+    "bytes": 114663,
+    "sha256": "726a88f5db3434bc8d0cc9eea171bb16908864beecc72032d0249c2e971e74c5"
+  },
+  "artifacts/hydEquivNet/01022500_daymet_seed42_60ep/unit_hydrographs/01022500_unit_hydrograph.csv": {
+    "bytes": 779,
+    "sha256": "3c5929e4927e5d28466744af35747b216618e9957d4300139371b300de96f9b1"
+  },
+  "data/01022500_daymet/01022500_lump_cida_forcing_leap.txt": {
+    "bytes": 754078,
+    "sha256": "1586f52b909d5017a3225f05f7558ea61a66d4ed6c778859f2f23079e0a5100b"
+  },
+  "data/01022500_daymet/01022500_streamflow_qc.txt": {
+    "bytes": 400012,
+    "sha256": "46ac37932d4b4c9a119d0577bfa6887ead379709f09f384996b808f0aff7cc68"
+  },
+  "data/01022500_daymet/basin_physical_characteristics.txt": {
+    "bytes": 34298,
+    "sha256": "8cd9936f306614e0a637bcca4b7d449b51d1b7cc571a0e58545aa6e5e36b0c93"
+  },
+  "reference/author_v1.0/hen_unit_hydrographs_15day_531.csv": {
+    "bytes": 80578,
+    "sha256": "45a9842653967a0ef44252628a77f3782f1c38ec74252d5fda523b336d000f57"
+  },
+  "reference/author_v1.0/model_metrics_531_basin_wide.csv": {
+    "bytes": 137978,
+    "sha256": "ecc6fc8c50fb47a3e4a95b798274b40ebef1c126950facdfce2de2438817c042"
+  },
+  "reference/author_v1.0/model_metrics_summary_mean_median.csv": {
+    "bytes": 853,
+    "sha256": "a9c9a1f78fc4a67444a5e3e22314d4d5252e1da60422f0352ab0bde826ed29e0"
+  }
+}
