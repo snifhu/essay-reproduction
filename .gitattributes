@@ -1,0 +1,4 @@
+# Preserve exact bytes for shared scientific data and recorded artifacts.
+/artifacts/** -text
+/data/** -text
+/reference/** -text
