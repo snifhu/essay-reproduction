@@ -1,0 +1,14 @@
+{
+  "E:\\HydEquivNet_reproduction\\data_single_daymet\\01022500_lump_cida_forcing_leap.txt": {
+    "bytes": 754078,
+    "sha256": "1586f52b909d5017a3225f05f7558ea61a66d4ed6c778859f2f23079e0a5100b"
+  },
+  "E:\\HydEquivNet_reproduction\\data_single_daymet\\01022500_streamflow_qc.txt": {
+    "bytes": 400012,
+    "sha256": "46ac37932d4b4c9a119d0577bfa6887ead379709f09f384996b808f0aff7cc68"
+  },
+  "E:\\HydEquivNet_reproduction\\data_single_daymet\\basin_physical_characteristics.txt": {
+    "bytes": 34298,
+    "sha256": "8cd9936f306614e0a637bcca4b7d449b51d1b7cc571a0e58545aa6e5e36b0c93"
+  }
+}

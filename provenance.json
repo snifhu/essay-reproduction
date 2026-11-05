@@ -1,0 +1,26 @@
+{
+  "source_matches_archive": {
+    "HEN_verified/hydequivnet/basis.py": true,
+    "HEN_verified/hydequivnet/config.py": true,
+    "HEN_verified/hydequivnet/data.py": true,
+    "HEN_verified/hydequivnet/layers.py": true,
+    "HEN_verified/hydequivnet/losses.py": true,
+    "HEN_verified/hydequivnet/metrics.py": true,
+    "HEN_verified/hydequivnet/models.py": true,
+    "HEN_verified/hydequivnet/plotting.py": true,
+    "HEN_verified/hydequivnet/train.py": true,
+    "HEN_verified/hydequivnet/unit_hydrograph.py": true,
+    "HEN_verified/hydequivnet/utils.py": true,
+    "HEN_verified/hydequivnet/workflows.py": true,
+    "HEN_verified/hydequivnet/__init__.py": true,
+    "HEN_verified/scripts/preflight_explicit_huc02_nse.py": true,
+    "HEN_verified/scripts/train_camels.py": true,
+    "HEN_verified/scripts/validate_euh_static_30.py": true,
+    "HEN_verified/scripts/validate_static5_nse_30.py": true
+  },
+  "checkpoint_basin_count": 531,
+  "results_basin_count": 531,
+  "same_id_set": true,
+  "only_checkpoints": [],
+  "only_results": []
+}

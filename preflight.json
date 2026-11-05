@@ -1,0 +1,67 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "torch": "2.7.1+cu128",
+  "cuda_runtime": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "capability": [
+    12,
+    0
+  ],
+  "features": [
+    "Prcp",
+    "Srad",
+    "Tmax",
+    "Tmin",
+    "Vp",
+    "Swe"
+  ],
+  "static": {
+    "BASIN_HUC": 1.0,
+    "Size(km2)": 620.3800048828125,
+    "Elevation(m)": 92.68000030517578,
+    "Slope(m_km-1)": 17.790719985961914,
+    "Frac_Forest(percent)": 0.9232000112533569
+  },
+  "forcing_area_km2": 587.675987,
+  "date_min": "1980-01-01 00:00:00",
+  "date_max": "2014-09-30 00:00:00",
+  "samples": {
+    "train": 6940,
+    "val": 1096,
+    "test": 1462,
+    "test_scaled": 1462
+  },
+  "target_dates": {
+    "train": [
+      "torch.Size([7305, 6])",
+      "1980-12-30 00:00:00"
+    ],
+    "val": [
+      "torch.Size([1461, 6])",
+      "2000-12-30 00:00:00"
+    ],
+    "test": [
+      "torch.Size([1827, 6])",
+      "2004-12-30 00:00:00"
+    ],
+    "test_scaled": [
+      "torch.Size([1827, 6])",
+      "2004-12-30 00:00:00"
+    ]
+  },
+  "original_static_native_filename": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "original_static_renamed_only": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "missing_basin_raises": true
+}
