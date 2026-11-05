@@ -14,3 +14,5 @@ Unchanged source caveats: sequences are constructed separately inside each split
 Scientific boundaries: equation (6) examines proportional response to precipitation scaling, not additivity of two storms. EUH is a model impulse-derived curve, not observed unit hydrograph. Raw meteorology predicts total streamflow without explicit effective rainfall, direct runoff or baseflow separation. No Mamba trainer found in supplied Python code; Mamba table entries are published reference results only.
 
 Published reference for 01022500: HEN NSE 0.7777571428, KGE 0.6628778742, Pearson r 0.9146271316. Matching these is not guaranteed by the available source/data provenance.
+
+Additional provenance finding: supplied preflight_explicit_huc02_nse.py uses train_end=2003-12-31 to compute the checkpoint inference scaler, unlike the default training configuration. Its distributed CSV reports legacy_static=[0,0,0,0,0] for 01022500 and explicit static NSE 0.77434975 versus reference 0.77775714. These inconsistencies constrain exact checkpoint comparisons; the new training keeps the paper split and corrected physical inputs.
