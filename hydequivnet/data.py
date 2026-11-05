@@ -49,7 +49,11 @@ def load_basin_data(basin_id: str, root_dir: str) -> tuple[pd.DataFrame, list[st
         fallback = os.path.join(root_dir, "**", f"*{basin_id}*_meteorological_inputs_*.txt")
         forcing_files = glob.glob(fallback, recursive=True)
     if not forcing_files:
+        forcing_files = glob.glob(os.path.join(root_dir, "**", f"{basin_id}_lump_*_forcing_leap.txt"), recursive=True)
+    if not forcing_files:
         raise FileNotFoundError(f"Forcing file not found for basin {basin_id}")
+    if len(forcing_files) != 1:
+        raise ValueError(f"Expected exactly one forcing file, found {forcing_files}")
     forcing_file = forcing_files[0]
 
     with open(forcing_file, "r", encoding="utf-8", errors="ignore") as f:
@@ -78,6 +82,8 @@ def load_basin_data(basin_id: str, root_dir: str) -> tuple[pd.DataFrame, list[st
     flow_pattern = os.path.join(root_dir, "**", f"*{basin_id}*_observed_discharge.txt")
     flow_files = glob.glob(flow_pattern, recursive=True)
     if not flow_files:
+        flow_files = glob.glob(os.path.join(root_dir, "**", f"{basin_id}_streamflow_qc.txt"), recursive=True)
+    if not flow_files:
         raise FileNotFoundError(f"Streamflow file not found for basin {basin_id}")
     flow = pd.read_csv(
         flow_files[0],
@@ -102,50 +108,27 @@ def load_basin_data(basin_id: str, root_dir: str) -> tuple[pd.DataFrame, list[st
 
 def _load_static_attributes(basin_id: str, root_dir: str) -> np.ndarray:
     """Load the explicit five-field static-conditioning vector."""
-    try:
-        static_attributes = load_static_attribute_dict(basin_id, root_dir)
-        return static_vector_from_dict(static_attributes)
-    except Exception:
-        return np.zeros(STATIC_ATTRIBUTE_DIM, dtype=np.float32)
+    return static_vector_from_dict(load_static_attribute_dict(basin_id, root_dir))
 
 
 def load_static_attribute_dict(basin_id: str, root_dir: str) -> dict[str, float]:
-    """Load the five static-conditioning inputs by explicit field name."""
-    zero_attributes = {name: 0.0 for name in STATIC_INPUT_COLUMNS}
-    pattern = os.path.join(root_dir, "**", "catchment_attributes.txt")
-    static_files = glob.glob(pattern, recursive=True)
-    if not static_files:
-        return zero_attributes
-
-    # Match the dtype inference and basin lookup used for checkpoint generation.
-    attrs = pd.read_csv(static_files[0], sep=r"\s+")
+    """Read named physical attributes with explicit IDs; fail on missing data."""
+    files = glob.glob(os.path.join(root_dir, "**", "catchment_attributes.txt"), recursive=True)
+    if not files:
+        files = glob.glob(os.path.join(root_dir, "**", "basin_physical_characteristics.txt"), recursive=True)
+    if len(files) != 1:
+        raise ValueError(f"Expected one static table: {files}")
+    attrs = pd.read_csv(files[0], sep=r"\s+", dtype={"BASIN_ID": str})
     required = {"BASIN_ID", *STATIC_INPUT_COLUMNS}
-    missing = required.difference(attrs.columns)
-    if missing:
-        return zero_attributes
-
-    basin_str = str(basin_id).zfill(8)
-    id_col = None
-    for column in attrs.columns:
-        if basin_str in attrs[column].astype(str).values:
-            id_col = column
-            break
-    if id_col is None:
-        return zero_attributes
-
-    attrs.set_index(id_col, inplace=True)
-    row = attrs.loc[int(basin_id)] if int(basin_id) in attrs.index else attrs.loc[basin_str]
-    if isinstance(row, pd.DataFrame):
-        row = row.iloc[0]
-    values = pd.to_numeric(row.loc[list(STATIC_INPUT_COLUMNS)], errors="coerce").to_numpy(dtype=np.float32)
-    if values.shape != (STATIC_ATTRIBUTE_DIM,):
-        return zero_attributes
+    if not required.issubset(attrs.columns):
+        raise ValueError(f"Missing static fields: {required.difference(attrs.columns)}")
+    rows = attrs[attrs.BASIN_ID.str.zfill(8) == str(basin_id).zfill(8)]
+    if len(rows) != 1:
+        raise ValueError(f"Expected exactly one static row for {basin_id}")
+    values = pd.to_numeric(rows.iloc[0][list(STATIC_INPUT_COLUMNS)], errors="raise").to_numpy(dtype=np.float32)
     if not np.isfinite(values).all():
-        values = np.nan_to_num(values).astype(np.float32)
-    return {
-        name: float(value)
-        for name, value in zip(STATIC_INPUT_COLUMNS, values)
-    }
+        raise ValueError("Nonfinite static attributes")
+    return dict(zip(STATIC_INPUT_COLUMNS, map(float, values)))
 
 
 def static_vector_from_dict(static_attributes: dict[str, float]) -> np.ndarray:
